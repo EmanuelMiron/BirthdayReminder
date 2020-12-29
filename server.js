@@ -30,3 +30,4 @@ db.mongoose
     })
 
     require('./routes/auth.routes')(app);
+    require('./routes/contact.routes')(app);
