@@ -5,4 +5,9 @@ module.exports = app => {
         "/api/contacts/addContact",
         controllers.addContact
     )
+
+    app.get(
+        "/api/contact/:id",
+        controllers.getOneContact
+    )
 }
