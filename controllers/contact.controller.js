@@ -64,3 +64,39 @@ exports.getAllContacts = (req, res) => {
             res.status(200).json(contacts)
         })
 }
+
+exports.updateContact = (req, res) => {
+    const contactId = req.params.id;
+
+    const {
+        birthday
+    } = req.body
+
+    Contact
+        .findOne({
+            _id: contactId
+        })
+        .exec((err, contact) => {
+            if (err) {
+                res.status(500).json({
+                    message: err
+                });
+                return;
+            }
+
+            if (!contact) {
+                res.status(404).json({
+                    message: "Contact not found!"
+                });
+                return;
+            }
+
+            contact.birthday = birthday;
+            contact.save()
+
+            res.status(200).json({
+                message: "Contact updated successfully!"
+            })
+
+        })
+}
