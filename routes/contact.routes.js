@@ -15,4 +15,9 @@ module.exports = app => {
         "/api/contacts",
         controllers.getAllContacts
     )
+
+    app.put(
+        "/api/contact/:id",
+        controllers.updateContact
+    )
 }
