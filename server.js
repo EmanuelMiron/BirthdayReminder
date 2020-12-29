@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -10,8 +9,10 @@ const {
     DB_PORT,
     DB_NAME
 } = dbConfig;
+const db = require('./models');
 
-mongoose.connect(`mongodb://${HOST}:${DB_PORT}/${DB_NAME}`, {
+db.mongoose
+    .connect(`mongodb://${HOST}:${DB_PORT}/${DB_NAME}`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
