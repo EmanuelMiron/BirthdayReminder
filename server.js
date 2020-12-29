@@ -11,6 +11,8 @@ const {
 } = dbConfig;
 const db = require('./models');
 
+app.use(express.json());
+
 db.mongoose
     .connect(`mongodb://${HOST}:${DB_PORT}/${DB_NAME}`, {
         useNewUrlParser: true,
