@@ -19,3 +19,23 @@ exports.addContact = (req, res) => {
         res.status(200).json({message: "Contact was created successfully!"})
     })
 }
+
+exports.getOneContact = (req, res) => {
+    const contactId = req.params.id;
+
+    Contact
+    .findOne({_id: contactId})
+    .exec((err, contact) => {
+        if(err){ 
+            res.status(500).json({message: err});
+            return;
+        }
+
+        if(!contact){
+            res.status(404).json({message: "Contact not found!"});
+            return;
+        }
+
+        res.status(200).json(contact)
+    })
+}
