@@ -26,3 +26,5 @@ db.mongoose
         console.error("Error", err);
         process.exit();
     })
+
+    require('./routes/auth.routes')(app);
