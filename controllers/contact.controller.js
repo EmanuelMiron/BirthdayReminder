@@ -100,3 +100,23 @@ exports.updateContact = (req, res) => {
 
         })
 }
+
+exports.deleteContact = (req, res) => {
+    const contactId = req.params.id;
+
+    Contact
+    .findByIdAndDelete(contactId)
+    .exec((err, contact) => {
+        if(err){
+            res.status(500).json({message: err});
+            return;
+        }
+
+        if(contact == undefined){
+            res.status(404).json({message: "Contact not found!"});
+            return;
+        }
+
+        res.status(200).json({message: "Contact was deleted successfully!"});
+    })
+}
