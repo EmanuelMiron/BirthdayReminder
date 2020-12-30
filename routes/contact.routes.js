@@ -20,4 +20,9 @@ module.exports = app => {
         "/api/contact/:id",
         controllers.updateContact
     )
+
+    app.delete(
+        "/api/contact/:id",
+        controllers.deleteContact
+    )
 }
