@@ -3,7 +3,8 @@ const mongoose = require('mongoose');
 const ContactSchema = {
     firstName: String,
     lastName: String,
-    birthday: String
+    birthday: String,
+    userId: String
 }
 
 const Contact = mongoose.model(
